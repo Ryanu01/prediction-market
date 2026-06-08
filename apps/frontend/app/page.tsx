@@ -101,6 +101,20 @@ export default function Home() {
           : "Not Connected"}
       </p>
 
+<div>
+            <button onClick={async () => {
+              fetch("http://localhost:3001/buy", {
+                method: "POST",
+                headers: {
+                  "Authorization": `${localStorage.getItem("token")}`
+                }            
+              },
+            )
+            }}>
+              send req
+            </button>
+
+          </div>
       {!wallet.connected ? (
         <WalletMultiButton />
       ) : (
@@ -125,8 +139,9 @@ export default function Home() {
               {loading ? "Signing..." : "Sign In"}
             </button>
           ) : (
-            <p>✅ Authenticated</p>
+            <p> Authenticated</p>
           )}
+          
         </div>
       )}
     </div>
