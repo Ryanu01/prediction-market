@@ -28,11 +28,13 @@ app.post("/auth/wallet", (req, res) => {
             process.env.JWT_SECRET!
         )
 
-        res.json({
+        return res.status(200).json({
             token
         })
     } catch (error) {
-        
+        return res.status(500).json({
+            message: "Error while signing"
+        })
     }
 })
 
